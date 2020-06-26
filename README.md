@@ -9,3 +9,14 @@ Architecture du Projet :
 - Main.py
 - Presentation.ipynb
 
+Les colonnes des données que j'ai considéré utiles à la prédiction :
+
+- Valeur Foncière : Target donc obligatoire
+- Code département : Prix des maisons et des appartements dépendent beaucoup du département
+- Code commune : Peut-être trop précis
+- Nombre de lots dans une maison 
+- Les surfaces et type de lots
+- Type local
+- Surface réelle
+- Nombre de pièces principales
+- Surface terrain
