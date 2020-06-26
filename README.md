@@ -1,14 +1,20 @@
+## Modèle
 Mise en Place d'un modèle prédictif de la valeur foncière lors d'une vente d'un appartement ou d'une maison
 
+## Fichiers 
 Les fichiers trop volumineux sont dans le .gtignore
 
-Architecture du Projet :
+## Librairies
+Installer les librairies via `pip install -r requirements.txt`
+
+## Architecture du Projet :
 
 - Projet (Preprocessing,Modeles,Config,Results,Data)
 - requirements.txt
 - Main.py
 - Presentation.ipynb
 
+## Choix des Paramètres
 Les colonnes des données que j'ai considéré utiles à la prédiction :
 
 - Valeur Foncière : Target donc obligatoire
