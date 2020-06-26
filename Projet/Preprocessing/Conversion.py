@@ -7,7 +7,7 @@ def __convert__(load_path,save_path) :
     try : 
         data = pd.read_csv(load_path,delimiter='|')
     except :
-        print(" The path is not correct ")
+        print(" The path is not correct or the file does not exist")
         print(load_path)
     data.to_csv(save_path,index = False)
 
@@ -17,7 +17,7 @@ def __deleteCol__(load_path,save_path) :
     try :
         data = pd.read_csv(load_path)
     except :
-        print(' The path is not correct')
+        print(' The path is not correct or the file does not exist')
         print(load_path)
 
     data.dropna(axis = 1,how = 'all',inplace = True)
@@ -29,7 +29,7 @@ def __filter__(load_path,save_path) :
     try :
         data = pd.read_csv(load_path)
     except :
-        print(" The path is not correct")
+        print(" The path is not correct or the file does not exist")
         print(load_path)
     
     # Maison et appartement
