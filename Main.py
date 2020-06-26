@@ -6,7 +6,7 @@ import pandas as pd
 # Imports internes
 from Projet.Config.Hyperparameters import getArgs
 from Projet.Preprocessing.Conversion import configData
-from Projet.Preprocessing.Standardisation import usefulCol
+from Projet.Preprocessing.Standardisation import usefulCol,standardData
 
 # Import des HyperParamètres
 args = getArgs()
@@ -18,5 +18,6 @@ def __config__() :
 # Standardisation de la donnnée
 def __standard__() :
     usefulCol(args)
+    standardData(args)
 
 __standard__()
