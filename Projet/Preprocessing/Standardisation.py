@@ -10,8 +10,7 @@ def usefulCol(args) :
     new_data.to_csv(args.path_useful_csv,index = False)
 
 
-# Standardisation
-
+# Standardisation (Conversion en float pas encore exéctuée)
 def standardData(args) :
     data = pd.read_csv(args.path_useful_csv)
     data.fillna(0,inplace = True)

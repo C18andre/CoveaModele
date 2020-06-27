@@ -26,3 +26,7 @@ Les colonnes des données que j'ai considéré utiles à la prédiction :
 - Surface réelle
 - Nombre de pièces principales
 - Surface terrain
+
+## Échantillon aléatoire
+
+Étant donné la taille de la donnée, nous allons entraîner les modèles sur un échantillon aléatoire et donc nous supposons que cet échantillon peut représenter toutes les données au complet

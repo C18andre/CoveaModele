@@ -2,11 +2,14 @@
 
 # Imports externes
 import pandas as pd
+import warnings
+warnings.simplefilter('ignore')
 
 # Imports internes
 from Projet.Config.Hyperparameters import getArgs
 from Projet.Preprocessing.Conversion import configData
 from Projet.Preprocessing.Standardisation import usefulCol,standardData
+from Projet.Preprocessing.Batch import getRandomSample
 
 # Import des HyperParamètres
 args = getArgs()
@@ -17,7 +20,11 @@ def __config__() :
 
 # Standardisation de la donnnée
 def __standard__() :
-    usefulCol(args)
-    standardData(args)
+    usefulCol(args)    # Garder uniquement les colonnes que j'ai trouvé pertinentes
+    standardData(args) # Remplacer les Na par des 0 
 
-__standard__()
+# Obtention d'un échantillon aléatoire et conversion en float
+def __sample__() :
+    getRandomSample(args) # Problème avec les codes départements
+
+__sample__()
