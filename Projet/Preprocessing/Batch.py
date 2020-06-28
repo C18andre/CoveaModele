@@ -3,14 +3,55 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
-# Get a random sample from the dataframe
-def getRandomSample(args) :
-    data = pd.read_csv(args.path_data_csv)
-    sample = data.sample(n = args.sample_size)
-    sample.reset_index(inplace = True)
-    del sample['index']
-    sample_data = convertToFloat(sample)
-    sample_data.to_csv(args.path_sample_csv,index = False)
+
+# Get the data for a particular city
+def getCitySample(args,ville,code_departement) :
+    # Check du type de donnée
+    if type(ville) != str :
+        raise ValueError("This is not a string")
+    if type(code_departement) == str :
+        code_departement = int(code_departement)
+    
+    # Enregistrement des données
+    try : 
+        city_data = pd.read_csv(args.path_data_csv.format(ville,code_departement))
+        print("Data already exist")
+        
+    except :
+        # Mis en majuscule si ce n'était pas le cas   
+        ville = ville.upper()
+
+        # Get Clean Data
+        clean_data = pd.read_csv(args.path_clean_csv)
+        # Match city + code departement
+        data_ = clean_data['Commune'].str.match(ville)
+        city_data = clean_data.where(data_)
+        city_data.dropna(inplace = True,how = 'all')
+        data_ = city_data['Code departement'] == code_departement
+        city_data = city_data.where(data_)
+        city_data.dropna(inplace = True,how = 'all')
+        # Choix des colonnes utiles et fillna(0)
+        columns = args.colonnes_utiles
+        city_data = city_data[columns]
+        city_data.fillna(0,inplace = True)
+        city_data.reset_index(inplace = True,drop = True)
+
+        # Convertir tout en float
+        city_data = convertToFloat(city_data)
+    
+    # Supprimer les lignes avec des transactions de moins de 10000
+    data_ = city_data['Valeur fonciere'] >= args.minimum_transaction
+    clean_city_data = city_data.where(data_)
+    clean_city_data.dropna(inplace = True,how = 'all')
+    
+    # Check the len of the data
+    if len(clean_city_data) < args.minimum_size :
+        print("Not enough data")
+        print("Len = {}".format(len(clean_city_data)))
+
+    # Sauvergarde des données
+    clean_city_data.to_csv(args.path_data_csv.format(ville,code_departement),index = False)
+
 
 # Convert to float
 def convertToFloat(dataframe) :
@@ -38,8 +79,7 @@ def splitTVT(data,args) :
 def splitXY(data) :
     dataframe = data.copy()
     # Supression de l'index
-    dataframe.reset_index(inplace = True)
-    del dataframe['index']
+    dataframe.reset_index(inplace = True,drop = True)
     # Colonne target
     data_target = dataframe['Valeur fonciere']
     del dataframe['Valeur fonciere']

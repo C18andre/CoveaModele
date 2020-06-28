@@ -6,10 +6,11 @@ Pour l'utilisation du projet, se référer au UserGuide.md
 
 ## Architecture du Projet
 
-- Projet (Preprocessing,Modeles,Config,Results,Data,TrainingData)
+- Projet (Preprocessing,Modeles,Config,Results,Data)
 - requirements.txt
 - Main.py
 - Presentation.ipynb
+- UserGuide.md : Guide d'utilisation du modèle
 - Les fichiers trop volumineux sont dans le .gitignore donc pas présent sur github
 
 ## Documentation
@@ -29,14 +30,12 @@ Références :
 
  - [2] : https://www.economie.gouv.fr/cedef/estimer-prix-immobilier
 
-## Filtrage des données
+## Filtrage des données et choix des paramètres
 
  - Suppression des colonnes vides 
  - On garde uniquement les ventes sur des Maisons et Appartements
  - Afin de s'assurer de la qualité des données, je choisis de supprimer les ventes de moins de 10 000€
- - Choix d'une ville ou d'un département, car les prix son très dépendant de la situation d'un bien
-
-## Choix des Paramètres
+ - Choix d'une ville, car les prix son très dépendant de la situation géographique d'un bien
 
 Après avoir choisit une ville,
 Les colonnes des données que j'ai considéré utile à la prédiction :
