@@ -2,13 +2,7 @@
 
 Mise en Place d'un modèle prédictif de la valeur foncière lors d'une vente d'un appartement ou d'une maison
 
-## Fichiers 
-
-Les fichiers trop volumineux sont dans le .gitignore
-
-## Librairies
-
-Installer les librairies via `pip install -r requirements.txt`
+Pour l'utilisation du projet, se référer au UserGuide.md
 
 ## Architecture du Projet
 
@@ -16,6 +10,7 @@ Installer les librairies via `pip install -r requirements.txt`
 - requirements.txt
 - Main.py
 - Presentation.ipynb
+- Les fichiers trop volumineux sont dans le .gitignore donc pas présent sur github
 
 ## Documentation
 
@@ -64,3 +59,5 @@ Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choi
  - LSTM
  - XGBoost
  - RandomForestRegressor (Pratique pour l'explicabilité d'un modèle)
+
+

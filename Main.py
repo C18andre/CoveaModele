@@ -18,8 +18,8 @@ args = getArgs()
 # TODO : Suppression des ventes de moins de 10000
 # TODO : Choix des données par ville, plus de random_batch
 # TODO : Vérification de la taille du sample
-# TODO : Enregistrement du sample sous le nom de la ville
-# TODO : Enregistrer le modèle avec le nom de la ville
+# TODO : Enregistrement du sample sous le nom de la ville (upper())
+# TODO : Enregistrer le modèle avec le nom de la ville (upper())
 # TODO : Analyser l'importance de la normalisation
 # TODO : Faire XGBoost et RandomForestRegressor
 
@@ -35,6 +35,16 @@ def __standard__() :
 # Obtention d'un échantillon aléatoire et conversion en float
 def __sample__() :
     getRandomSample(args) # Problème avec les codes départements ()
+
+# Select 
+
+def __select__(ville) :
+    # Check du type de donnée
+    if type(ville) != str :
+        raise ValueError("This is not a string")
+    # Mis en majuscule si ce n'était pas le cas   
+    ville = ville.upper()
+
 
 # Train LSTM Net on the sample data
 def __trainLSTM__() :
