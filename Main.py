@@ -10,6 +10,7 @@ from Projet.Config.Hyperparameters import getArgs
 from Projet.Preprocessing.Conversion import configData
 from Projet.Preprocessing.Standardisation import usefulCol,standardData
 from Projet.Preprocessing.Batch import getRandomSample
+from Projet.Modeles.Networks import LstmNet
 
 # Import des HyperParamètres
 args = getArgs()
@@ -27,4 +28,9 @@ def __standard__() :
 def __sample__() :
     getRandomSample(args) # Problème avec les codes départements
 
-__sample__()
+# Train LSTM Net on the sample data
+def __trainLSTM__() :
+    data = pd.read_csv(args.path_sample_csv)
+    LSTM = LstmNet(args,data)
+    LSTM.train()
+

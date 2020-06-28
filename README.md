@@ -9,7 +9,7 @@ Installer les librairies via `pip install -r requirements.txt`
 
 ## Architecture du Projet :
 
-- Projet (Preprocessing,Modeles,Config,Results,Data)
+- Projet (Preprocessing,Modeles,Config,Results,Data,TrainingData)
 - requirements.txt
 - Main.py
 - Presentation.ipynb
@@ -30,3 +30,8 @@ Les colonnes des données que j'ai considéré utiles à la prédiction :
 ## Échantillon aléatoire
 
 Étant donné la taille de la donnée, nous allons entraîner les modèles sur un échantillon aléatoire et donc nous supposons que cet échantillon peut représenter toutes les données au complet
+Second choix : Remplacement des Codes départementales en lettres par 0 (Possiblement à revoir)
+
+## Normalisation des données
+
+Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis de normaliser les données grâce à scikit-learn (MinMaxScaler,StandardScaler)

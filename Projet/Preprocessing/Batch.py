@@ -1,6 +1,7 @@
 # Imports externes
 import pandas as pd
-
+import numpy as np
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 # Get a random sample from the dataframe
 def getRandomSample(args) :
@@ -23,3 +24,36 @@ def convertToFloat(dataframe) :
                         except :
                             data[column][i] = 0.0
     return data
+
+# Split Train-Validation-Test
+def splitTVT(data,args) :
+    split_train = int(len(data)*args.taille_train)
+    split_validation = int(len(data)*args.taille_validation)
+    train = data[: split_train]
+    validation = data[split_train : split_train + split_validation ]
+    test = data[split_train + split_validation : :]
+    return train,validation,test
+
+# Split X/Y
+def splitXY(data) :
+    dataframe = data.copy()
+    # Supression de l'index
+    dataframe.reset_index(inplace = True)
+    del dataframe['index']
+    # Colonne target
+    data_target = dataframe['Valeur fonciere']
+    del dataframe['Valeur fonciere']
+    # Création des vecteurs X et Y
+    dataX, dataY = [], []
+    for i in range(len(dataframe)):
+        a = dataframe.iloc[i]
+        dataX.append(a)
+        dataY.append([data_target[i]])
+    return np.array(dataX), np.array(dataY)
+
+
+
+    
+    
+
+    
