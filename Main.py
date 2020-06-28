@@ -17,10 +17,11 @@ args = getArgs()
 
 # TODO : Suppression des ventes de moins de 10000
 # TODO : Choix des données par ville, plus de random_batch
-# TODO : Enregistrer le modèle avec le nom de la ville
 # TODO : Vérification de la taille du sample
+# TODO : Enregistrement du sample sous le nom de la ville
+# TODO : Enregistrer le modèle avec le nom de la ville
 # TODO : Analyser l'importance de la normalisation
-# TODO : Faire XGB et RandomForestRegressor
+# TODO : Faire XGBoost et RandomForestRegressor
 
 # Conversion et configuration de la donnée brute
 def __config__() :  
@@ -40,6 +41,3 @@ def __trainLSTM__() :
     data = pd.read_csv(args.path_sample_csv)
     LSTM = LstmNet(args,data)
     LSTM.train()
-
-__trainLSTM__()
-
