@@ -55,6 +55,7 @@ class LstmNet() :
         modele.compile(loss='mse', optimizer= self.optimizer , metrics=['mae'])
         return modele
 
+    # Training the model
     def train(self) :
         nb_epochs = self.args.nb_lstm_epochs
         batch_size = self.args.batch_lstm_size
@@ -63,9 +64,9 @@ class LstmNet() :
         history = self.modele.fit(self.X_scaled_train,self.Y_scaled_train,epochs=nb_epochs, batch_size=batch_size, callbacks=callbacks_list,
                                 validation_data=(self.X_scaled_validation,self.Y_scaled_validation),verbose = 1)
         self.trained = True
-        print(history.history)
-    
-    # test the model
+        self.saveResults(history)
+        
+    # Testing the model
     def test(self) :
         if not self.trained :
             print('The model is not trained')
@@ -85,7 +86,6 @@ class LstmNet() :
         # Reshape 
         X_scaled = X_scaled.reshape(X_scaled.shape[0],1,X_scaled.shape[1])
         Y_scaled = Y_scaled.reshape(Y_scaled.shape[0],Y_scaled.shape[1])
-        print(X_scaled)
         return X_scaled,Y_scaled
     
     def logParams(self) :
@@ -96,4 +96,14 @@ class LstmNet() :
         print("Shape train data = {}".format(self.X_scaled_train.shape))
         print("Shape validation data = {}".format(self.X_scaled_validation.shape))
         print("Shape test data = {}".format(self.X_scaled_test.shape))
+        print("Learning rate = {}".format(self.args.learning_rate_lstm))
         print("")
+    
+    def saveResults(self,history) :
+        df = pd.DataFrame()
+        df['loss'] = history.history['loss']
+        df['mae'] = history.history['mae']
+        df['val_loss'] = history.history['val_loss']
+        df['val_mae'] = history.history['val_mae']
+        df.to_csv(self.args.path_results_lstm.format(self.args.nb_1_layer,self.args.nb_2_layer),index = False)
+        
