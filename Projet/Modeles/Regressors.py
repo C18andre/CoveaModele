@@ -22,7 +22,7 @@ class XgbReg() :
 
         # Loading data
         try :
-            self.data = pd.read_csv(self.args.path_data_csv.format(ville.upper(),code_departement))
+            self.data = pd.read_csv(self.args.path_training_data_csv.format(ville.upper(),code_departement))
             print("")
             print("Data already exists and has sucessfully been loaded")
             print("")
@@ -31,7 +31,8 @@ class XgbReg() :
             print("Data has to be extract")
             print("")
             getCitySample(self.args,ville,code_departement)
-            self.data = pd.read_csv(self.args.path_data_csv.format(ville.upper(),code_departement))
+            normalize(args,ville,code_departement)
+            self.data = pd.read_csv(self.args.path_training_data_csv.format(ville.upper(),code_departement))
         
         # Path
         self.path = self.args.save_xgb_path.format(ville.upper(),code_departement)

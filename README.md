@@ -36,10 +36,9 @@ Références :
  - Suppression des doublons (lignes identiques)
  - On garde uniquement les ventes sur des Maisons et Appartements
  - Afin de s'assurer de la qualité des données, je choisis de supprimer les ventes de moins de 10 000€
- - Choix d'une ville, car les prix son très dépendant de la situation géographique d'un bien
- - Je choisis également de supprimer les ventes de plus de 1 500 000€ (car trop particulier comme vente)
+ - Choix d'une ville, car les prix sont très dépendant de la situation géographique d'un bien
+ - Je choisis également de supprimer les ventes de plus de 1 500 000€ (Au dessus de ce prix, d'autres paramètres rentrent en compte)
  Ensuite nous avons donc les données pour chaque ville (Les plus grandes)
-
 
 Après avoir choisit une ville,
 Les colonnes des données que j'ai considéré utile à la prédiction :
@@ -58,7 +57,7 @@ Les colonnes des données que j'ai considéré utile à la prédiction :
 ## Normalisation des données
 
 Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction log(1+X) sur la valeur fonciere,
-cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de donnée
+cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de donnée. On va ainsi obtenir une répartition quasi-normale.
 
 ## Différents modèles utilisés
 

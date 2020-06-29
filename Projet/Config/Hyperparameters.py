@@ -29,7 +29,7 @@ def getArgs() :
     parser.add_argument('--nb_1_layer',type = int,default = 100)  
     parser.add_argument('--nb_2_layer',type = int,default = 40)
     parser.add_argument('--learning_rate_nn',type = float,default = 0.001)
-    parser.add_argument('--nb_nn_epochs',type = int,default = 300)
+    parser.add_argument('--nb_nn_epochs',type = int,default = 100)
     parser.add_argument('--batch_nn_size',type = int,default = 50)
     parser.add_argument('--save_nn_path',type = str,default = 'Projet/Modeles/PreTrained/NN_{}_{}.h5')
     parser.add_argument('--path_results_nn',type = str,default = 'Projet/Results/NN_results_{}_{}.csv')
