@@ -1,8 +1,7 @@
 # Imports externes
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-
+from sklearn.preprocessing import LabelEncoder
 
 # Get the data for a particular city
 def getCitySample(args,ville,code_departement) :
@@ -38,6 +37,17 @@ def getCitySample(args,ville,code_departement) :
         city_data.fillna(0,inplace = True)
         city_data.reset_index(inplace = True,drop = True)
 
+        # Convertir les colonnes Type de voie et Code commmune
+        le_cc = LabelEncoder()
+        city_data['Code commune'].fillna(0,inplace = True)
+        le_cc.fit(city_data['Code commune'].to_list())
+        city_data['Code commune'] = le_cc.transform(city_data['Code commune'].to_list())
+
+        le_tv = LabelEncoder()
+        city_data['Type de voie'].fillna(0,inplace = True)
+        le_tv.fit(city_data['Type de voie'].to_list())
+        city_data['Type de voie'] = le_tv.transform(city_data['Type de voie'].to_list())      
+        
         # Convertir tout en float
         city_data = convertToFloat(city_data)
     
@@ -67,7 +77,7 @@ def getCitySample(args,ville,code_departement) :
 def convertToFloat(dataframe) :
     data = dataframe.copy()
     for column in data.columns :
-        if data[column].dtypes == 'object' :
+        if data[column].dtypes == 'object':
             for i in range(len(data)) :
                 if type(data[column][i]) == str :
                         try :

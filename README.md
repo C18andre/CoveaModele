@@ -47,8 +47,10 @@ Les colonnes des données que j'ai considéré utile à la prédiction :
 
 - Valeur Foncière : Target donc obligatoire
 - Nombre de lots dans une maison 
-- Les surfaces et type de lots
+- Les surfaces Carrez des différents lots (Plus de 1m80 de plafond)
 - Type local
+- Type de voie (Encoder avec LabelEncoder())
+- Code Commune (Encoder avec LabelEncoder())
 - Surface réelle
 - Nombre de pièces principales
 - Surface terrain
