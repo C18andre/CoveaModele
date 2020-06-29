@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 # Imports internes
 from Projet.Preprocessing.Batch import splitTVT,splitXY
-from Projet.Preprocessing.Batch import getCitySample
+from Projet.Preprocessing.Batch import getCitySample,normalize
 
 #  Class XGB
 class XgbReg() :
@@ -54,7 +54,7 @@ class XgbReg() :
         except :
             self.regressor = xgb.XGBRegressor(colsample_bytree=0.2, gamma=0.0, 
                              learning_rate=0.05, max_depth=6, 
-                             min_child_weight=1.5, n_estimators=100,
+                             min_child_weight=1.6, n_estimators=600,
                              reg_alpha=0.9, reg_lambda=0.6,
                              subsample=0.2, silent=1)
             print("")
@@ -65,15 +65,19 @@ class XgbReg() :
     def train(self) :
         eval_result = {}
         callBacks = xgb.callback.record_evaluation(eval_result)
-        self.regressor = self.regressor.fit(self.X_train,self.Y_train,eval_set = [(self.X_validation,self.Y_validation)],verbose=True,callbacks=[callBacks])
+        self.regressor = self.regressor.fit(self.X_train,self.Y_train,eval_set = [(self.X_validation,self.Y_validation),(self.X_train,self.Y_train)],
+                                            verbose=False,callbacks=[callBacks],eval_metric=['rmse','mae'])
         self.saveResults(eval_result)
         dump(self.regressor,self.path)
 
     # Saving Results
     def saveResults(self,dictio) :
         data = pd.DataFrame()
-        data['validation'] = dictio['validation_0']['rmse']
-        data.to_csv(self.results_path)
+        data['val_mse'] = dictio['validation_0']['rmse']
+        data['mse'] = dictio['validation_1']['rmse']
+        data['val_mae'] = dictio['validation_0']['mae']
+        data['mae'] = dictio['validation_1']['mae']
+        data.to_csv(self.results_path,index = False)
 
 
 

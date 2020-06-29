@@ -36,4 +36,4 @@ def __trainXGB__(ville,code_departement) :
     XGB = XgbReg(args,ville,code_departement)
     XGB.train()
 
-__trainNN__('Marseille',13)
+__trainXGB__('Lyon',69)
