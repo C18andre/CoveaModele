@@ -20,19 +20,19 @@ def getArgs() :
     # HP pour la taille de l'échantillon
     parser.add_argument('--minimum_size',type = int,default = 1000)  
     parser.add_argument('--minimum_transaction',type = float,default=10000.0)  
-    parser.add_argument('--maximum_transaction',type = float,default=3000000.0)  
+    parser.add_argument('--maximum_transaction',type = float,default=1500000.0)  
     parser.add_argument('--taille_train',type = float,default = 0.8)
     parser.add_argument('--taille_validation',type = float,default = 0.1)
 
     # Paramètres pour le NeuralNet
-    parser.add_argument('--nb_1_layer',type = int,default = 80)  
-    parser.add_argument('--nb_2_layer',type = int,default = 20)
+    parser.add_argument('--nb_1_layer',type = int,default = 100)  
+    parser.add_argument('--nb_2_layer',type = int,default = 40)
     parser.add_argument('--learning_rate_nn',type = float,default = 0.001)
-    parser.add_argument('--nb_nn_epochs',type = int,default = 200)
+    parser.add_argument('--nb_nn_epochs',type = int,default = 300)
     parser.add_argument('--batch_nn_size',type = int,default = 50)
     parser.add_argument('--save_nn_path',type = str,default = 'Projet/Modeles/PreTrained/NN_{}_{}.h5')
     parser.add_argument('--normalize',type = bool,default = True)
-    parser.add_argument('--MinMax_scaler',type = bool,default = True)
+    parser.add_argument('--MinMax_scaler',type = bool,default = False)
     parser.add_argument('--path_results_nn',type = str,default = 'Projet/Results/NN_results_{}_{}.csv')
 
     # Paramètres pour le XGB

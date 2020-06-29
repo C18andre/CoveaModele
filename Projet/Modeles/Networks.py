@@ -93,7 +93,7 @@ class NeuralNet() :
     def train(self) :
         nb_epochs = self.args.nb_nn_epochs
         batch_size = self.args.batch_nn_size
-        checkpoint = ModelCheckpoint(self.path, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
+        checkpoint = ModelCheckpoint(self.path, monitor='loss', verbose=1, save_best_only=True, mode='min')
         callbacks_list = [checkpoint]
         if self.args.normalize :
             history = self.modele.fit(self.X_scaled_train,self.Y_scaled_train,epochs=nb_epochs, batch_size=batch_size, callbacks=callbacks_list,
