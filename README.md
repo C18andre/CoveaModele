@@ -37,7 +37,7 @@ Références :
  - On garde uniquement les ventes sur des Maisons et Appartements
  - Afin de s'assurer de la qualité des données, je choisis de supprimer les ventes de moins de 10 000€
  - Choix d'une ville, car les prix son très dépendant de la situation géographique d'un bien
- - Je choisis également de supprimer les ventes de plus de 3 000 000€ (car trop particulier comme vente)
+ - Je choisis également de supprimer les ventes de plus de 1 500 000€ (car trop particulier comme vente)
  Ensuite nous avons donc les données pour chaque ville (Les plus grandes)
 
 

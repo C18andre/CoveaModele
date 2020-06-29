@@ -56,7 +56,7 @@ def getCitySample(args,ville,code_departement) :
     clean_city_data = city_data.where(data_)
     clean_city_data.dropna(inplace = True,how = 'all')
     
-    # Supprimer les transactions de plus de 3 000 000€
+    # Supprimer les transactions de plus de 1 500 000€
     data_ = clean_city_data['Valeur fonciere'] <= args.maximum_transaction
     clean_city_data = clean_city_data.where(data_)
     clean_city_data.dropna(inplace = True,how = 'all')
