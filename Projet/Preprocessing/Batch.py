@@ -23,6 +23,7 @@ def getCitySample(args,ville,code_departement) :
 
         # Get Clean Data
         clean_data = pd.read_csv(args.path_clean_csv)
+
         # Match city + code departement
         data_ = clean_data['Commune'].str.match(ville)
         city_data = clean_data.where(data_)
@@ -30,6 +31,7 @@ def getCitySample(args,ville,code_departement) :
         data_ = city_data['Code departement'] == code_departement
         city_data = city_data.where(data_)
         city_data.dropna(inplace = True,how = 'all')
+
         # Choix des colonnes utiles et fillna(0)
         columns = args.colonnes_utiles
         city_data = city_data[columns]
@@ -44,6 +46,14 @@ def getCitySample(args,ville,code_departement) :
     clean_city_data = city_data.where(data_)
     clean_city_data.dropna(inplace = True,how = 'all')
     
+    # Supprimer les transactions de plus de 3 000 000€
+    data_ = clean_city_data['Valeur fonciere'] <= args.maximum_transaction
+    clean_city_data = clean_city_data.where(data_)
+    clean_city_data.dropna(inplace = True,how = 'all')
+
+    # Suppression des doublons
+    clean_city_data.drop_duplicates(inplace = True)
+
     # Check the len of the data
     if len(clean_city_data) < args.minimum_size :
         print("Not enough data")

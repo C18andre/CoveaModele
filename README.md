@@ -32,14 +32,18 @@ Références :
 
 ## Filtrage des données et choix des paramètres
 
- - Suppression des colonnes vides 
+ - Suppression des colonnes vides
+ - Suppression des doublons (lignes identiques)
  - On garde uniquement les ventes sur des Maisons et Appartements
  - Afin de s'assurer de la qualité des données, je choisis de supprimer les ventes de moins de 10 000€
  - Choix d'une ville, car les prix son très dépendant de la situation géographique d'un bien
+ - Je choisis également de supprimer les ventes de plus de 3 000 000€ (car trop particulier comme vente)
+ Ensuite nous avons donc les données pour chaque ville (Les plus grandes)
+
 
 Après avoir choisit une ville,
 Les colonnes des données que j'ai considéré utile à la prédiction :
-( Celles sui se rapprochent le plus des critères principaux)
+( Celles qui se rapprochent le plus des critères principaux)
 
 - Valeur Foncière : Target donc obligatoire
 - Nombre de lots dans une maison 
@@ -53,10 +57,22 @@ Les colonnes des données que j'ai considéré utile à la prédiction :
 
 Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis de normaliser les données grâce à scikit-learn (MinMaxScaler,StandardScaler)
 
-## Différents modèles
+## Différents modèles utilisés
 
- - LSTM
+ - Neural network
  - XGBoost
  - RandomForestRegressor (Pratique pour l'explicabilité d'un modèle)
+
+## Neural networks
+
+J'ai choisi ici un réseau de neurones classique, particulièrement utilisé pour des problèmes de régressions.
+
+
+## XGBoost
+
+J'ai choisi d'utiliser également le 
+
+
+## RanddomForestRegressor
 
 
