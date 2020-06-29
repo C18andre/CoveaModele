@@ -57,13 +57,19 @@ Les colonnes des données que j'ai considéré utile à la prédiction :
 
 ## Normalisation des données
 
-Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis de normaliser les données grâce à scikit-learn (MinMaxScaler,StandardScaler)
+Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction log(1+X) sur la valeur fonciere,
+cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de donnée
 
 ## Différents modèles utilisés
 
  - Neural network
  - XGBoost
  - RandomForestRegressor (Pratique pour l'explicabilité d'un modèle)
+
+ Documentation et projet similaire :
+
+ [1] : https://www.kaggle.com/erick5/predicting-house-prices-with-machine-learning
+ 
 
 ## Neural networks
 

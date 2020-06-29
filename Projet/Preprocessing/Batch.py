@@ -86,6 +86,14 @@ def convertToFloat(dataframe) :
                             data[column][i] = 0.0
     return data
 
+# Applique log(1+X) sur valeur fonciere
+def normalize(args,ville,code_departement) :
+    # Mis en majuscule si ce n'était pas le cas   
+    ville = ville.upper()
+    data = pd.read_csv(args.path_data_csv.format(ville,code_departement))
+    data['Valeur fonciere'] = np.log1p(data['Valeur fonciere'])
+    data.to_csv(args.path_training_data_csv.format(ville,code_departement),index = False)
+
 # Split Train-Validation-Test
 def splitTVT(data,args) :
     split_train = int(len(data)*args.taille_train)
