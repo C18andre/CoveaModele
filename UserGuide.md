@@ -14,7 +14,3 @@
  - Entrainement des modèles via __train__()
 
  - Pour tester les modèles, utiliser la fonction __test__()
-
-
-
-

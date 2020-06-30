@@ -1,12 +1,11 @@
 ## Modèle
 
 Mise en Place d'un modèle prédictif de la valeur foncière lors d'une vente d'un appartement ou d'une maison
-
 Pour l'utilisation du projet, se référer au UserGuide.md
 
 ## Architecture du Projet
 
-- Projet (Preprocessing,Modeles,Config,Results,Data)
+- Projet (Preprocessing,Modeles,Config,Results,Data,TrainingData)
 - requirements.txt
 - Main.py
 - Presentation.ipynb
@@ -37,11 +36,9 @@ Références :
  - On garde uniquement les ventes sur des Maisons et Appartements
  - Afin de s'assurer de la qualité des données, je choisis de supprimer les ventes de moins de 10 000€
  - Choix d'une ville, car les prix sont très dépendant de la situation géographique d'un bien
- - Je choisis également de supprimer les ventes de plus de 1 500 000€ (Au dessus de ce prix, d'autres paramètres rentrent en compte)
- Ensuite nous avons donc les données pour chaque ville (Les plus grandes)
+ - Je choisis également de supprimer les ventes de plus de 1 500 000€ (Au dessus de ce prix, je pense que d'autres paramètres rentrent en compte)
 
-Après avoir choisit une ville,
-Les colonnes des données que j'ai considéré utile à la prédiction :
+Après avoir choisit une ville, je choisis les colonnes des données que j'ai considéré utile à la prédiction :
 ( Celles qui se rapprochent le plus des critères principaux)
 
 - Valeur Foncière : Target donc obligatoire
@@ -57,7 +54,7 @@ Les colonnes des données que j'ai considéré utile à la prédiction :
 ## Normalisation des données
 
 Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction ln(1+X) sur la valeur fonciere,
-cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de donnée. On va ainsi obtenir une répartition quasi-normale.
+cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de données. On va ainsi obtenir une répartition quasi-normale.
 
 ## Différents modèles utilisés
 
