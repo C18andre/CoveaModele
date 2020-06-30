@@ -10,7 +10,7 @@ from Projet.Config.Hyperparameters import getArgs
 from Projet.Preprocessing.Conversion import configData
 from Projet.Preprocessing.Batch import getCitySample,normalize
 from Projet.Modeles.Networks import NeuralNet
-from Projet.Modeles.Regressors import XgbReg
+from Projet.Modeles.Regressors import XgbReg,RfrReg
 
 # Import des HyperParamètres
 args = getArgs()
@@ -36,4 +36,17 @@ def __trainXGB__(ville,code_departement) :
     XGB = XgbReg(args,ville,code_departement)
     XGB.train()
 
-__trainXGB__('Lyon',69)
+# Entrainement du Random Forest Regressor pour une ville en particulier || Exemple : __trainRFR__('Marseille',13)
+def __trainRFR__(ville,code_departement) :
+    RFR = RfrReg(args,ville,code_departement)
+    RFR.train()
+
+# Test tous les algolrithmes || Exemple : __test__('Lyon',69)
+def __test__(ville,code_departement) :
+    NN = NeuralNet(args,ville,code_departement)
+    NN.test()
+    XGB = XgbReg(args,ville,code_departement)
+    XGB.test()
+    RFR = RfrReg(args,ville,code_departement)
+    RFR.test()
+

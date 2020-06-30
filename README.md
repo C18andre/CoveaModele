@@ -56,30 +56,21 @@ Les colonnes des données que j'ai considéré utile à la prédiction :
 
 ## Normalisation des données
 
-Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction log(1+X) sur la valeur fonciere,
+Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction ln(1+X) sur la valeur fonciere,
 cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de donnée. On va ainsi obtenir une répartition quasi-normale.
 
 ## Différents modèles utilisés
 
- - Neural network
- - XGBoost
- - RandomForestRegressor (Pratique pour l'explicabilité d'un modèle)
+ Je propose de comparer 3 modèles fréquemment utilisé dans les problèmes de régression :
+
+ - Neural network (J'ai choisi ici un réseau de neurones classique composé de 3 couches)
+ - XGBoost (J'ai choisi d'utiliser également le xgb, que j'avais déjà utilisé pour un problème de régression)
+ - RandomForestRegressor (Le random forest regressor que j'ai également déjà utilisé)
 
  Documentation et projet similaire :
 
  [1] : https://www.kaggle.com/erick5/predicting-house-prices-with-machine-learning
  
 
-## Neural networks
-
-J'ai choisi ici un réseau de neurones classique, particulièrement utilisé pour des problèmes de régressions.
-
-
-## XGBoost
-
-J'ai choisi d'utiliser également le 
-
-
-## RanddomForestRegressor
 
 

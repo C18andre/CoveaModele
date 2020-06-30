@@ -1,6 +1,7 @@
 # Imports externes
 import tensorflow as tf 
 import pandas as pd 
+import numpy as np
 from keras.models import Sequential,load_model
 from keras.layers import Dense, Dropout, Activation, Input, LSTM, Dense
 from keras.optimizers import Adam
@@ -35,6 +36,7 @@ class NeuralNet() :
         # Paths
         self.path = self.args.save_nn_path.format(ville.upper(),code_departement)
         self.results_path = self.args.path_results_nn.format(ville.upper(),code_departement)
+        self.test_path = self.args.path_test_nn.format(ville.upper(),code_departement)
 
         # Data
         self.data_train,self.data_validation,self.data_test = splitTVT(self.data,self.args)
@@ -91,8 +93,14 @@ class NeuralNet() :
         if not self.trained :
             print('The model is not trained')
         else :
-            metrics = self.modele.evaluate(self.X_test,self.Y_test,verbose = 1)
-    
+            Y_pred = self.modele.predict(self.X_test)
+            Y_pred = tf.squeeze(Y_pred).numpy()
+            Y_pred = self.power(Y_pred)
+            Y_test = np.squeeze(self.Y_test)
+            Y_true = self.power(Y_test)
+            self.saveTest(Y_pred,Y_true)
+
+
     # Affiche les paramètres
     def logParams(self) :
         self.modele.summary()
@@ -114,10 +122,22 @@ class NeuralNet() :
         df['val_mae'] = history.history['val_mae']
         df.to_csv(self.results_path,index = False)
     
+    # Save test results
+    def saveTest(self,Y_pred,Y_true) :
+        df = pd.DataFrame()
+        df['Y_pred'] = Y_pred
+        df['Y_true'] = Y_true
+        df.to_csv(self.test_path,index = False)
+
     # Reshape pour le modèle
     def reshape(self,X,Y) :
         X = X.reshape(X.shape[0],1,X.shape[1])
         Y = Y.reshape(Y.shape[0],1,Y.shape[1])
         return X,Y
-
-        
+    
+    # Apply exp(x)-1 à un vecteur
+    def power(self,Y) :
+        Y_descale = []
+        for i in range(len(Y)) :
+            Y_descale.append(np.exp(Y[i])-1)
+        return Y_descale

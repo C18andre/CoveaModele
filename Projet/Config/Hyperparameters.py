@@ -33,10 +33,17 @@ def getArgs() :
     parser.add_argument('--batch_nn_size',type = int,default = 50)
     parser.add_argument('--save_nn_path',type = str,default = 'Projet/Modeles/PreTrained/NN_{}_{}.h5')
     parser.add_argument('--path_results_nn',type = str,default = 'Projet/Results/NN_results_{}_{}.csv')
+    parser.add_argument('--path_test_nn',type = str,default = 'Projet/Results/NN_test_{}_{}.csv')
 
     # Paramètres pour le XGB
     parser.add_argument('--save_xgb_path',type = str,default = 'Projet/Modeles/PreTrained/XGB_{}_{}.joblib')
     parser.add_argument('--path_results_xgb',type = str,default = 'Projet/Results/XGB_results_{}_{}.csv')
+    parser.add_argument('--path_test_xgb',type = str,default = 'Projet/Results/XGB_test_{}_{}.csv')
+
+    # Paramètres pour le RandomForestRegressor
+    parser.add_argument('--save_rfr_path',type = str,default = 'Projet/Modeles/PreTrained/RFR_{}_{}.joblib')
+    parser.add_argument('--path_results_rfr',type = str,default = 'Projet/Results/RFR_results_{}_{}.csv')
+    parser.add_argument('--path_test_rfr',type = str,default = 'Projet/Results/RFR_test_{}_{}.csv')
 
     args = parser.parse_args()
     return args
