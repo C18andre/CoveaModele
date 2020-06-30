@@ -41,6 +41,12 @@ def __trainRFR__(ville,code_departement) :
     RFR = RfrReg(args,ville,code_departement)
     RFR.train()
 
+# Entraine tous les algorithmes || Exemple : __train__('Marseille',13)
+def __train__(ville,code_departement) :
+    __trainNN__(ville,code_departement)
+    __trainXGB__(ville,code_departement)
+    __trainRFR__(ville,code_departement)
+
 # Test tous les algolrithmes || Exemple : __test__('Lyon',69)
 def __test__(ville,code_departement) :
     NN = NeuralNet(args,ville,code_departement)
