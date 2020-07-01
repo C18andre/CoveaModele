@@ -1,6 +1,6 @@
 ## Modèle
 
-Mise en Place d'un modèle prédictif de la valeur foncière lors d'une vente d'un appartement ou d'une maison
+Mise en place d'un modèle prédictif de la valeur foncière d'un appartement ou d'une maison lors d'une vente uniquement.
 Pour l'utilisation du projet, se référer au UserGuide.md
 
 ## Architecture du Projet
@@ -17,7 +17,7 @@ Pour l'utilisation du projet, se référer au UserGuide.md
 En premier lieu, je me suis documenté sur ce qui impactait la valeur d'un logement
 
 Les critères principaux sont :
- - La situation du bien
+ - La situation géographique du bien
  - Son état
  - Terrain extéreur
  - Étage (Pour les appartements)
@@ -53,12 +53,12 @@ Après avoir choisit une ville, je choisis les colonnes des données que j'ai co
 
 ## Normalisation des données
 
-Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction ln(1+X) sur la valeur fonciere,
+Afin que le modèle puisse apprendre au vu de la disparité des valeurs, je choisis d'appliquer la fonction ln(1+X) sur la valeur foncière,
 cette fonction va agir comme un filtre passe bas et diminuer fortement les disparités au sein de l'échantillon de données. On va ainsi obtenir une répartition quasi-normale.
 
 ## Différents modèles utilisés
 
- Je propose de comparer 3 modèles fréquemment utilisé dans les problèmes de régression :
+ Je propose de comparer 3 modèles fréquemment utilisés dans les problèmes de régression :
 
  - Neural network (J'ai choisi ici un réseau de neurones classique composé de 3 couches)
  - XGBoost (J'ai choisi d'utiliser également le xgb, que j'avais déjà utilisé pour un problème de régression)
